@@ -1,7 +1,9 @@
 import React from 'react'
 import logo from '../assets/sb2.png'
-import prof from '../assets/profile.jpg'
 import * as FaIcons from 'react-icons/fa';
+import { menuItems } from './MenuItemData';
+import MenuItem from './MenuItem';
+
 const SideMenu = (props) => {
     return (
         <div className="side-menu">
@@ -20,22 +22,20 @@ const SideMenu = (props) => {
 
                 <div className="main-menu" >
                     <ul>
-                        <li>
-                            <a className="menu-item">
-                                <div className="menu-icon">
-                                    <FaIcons.FaHome />
+                        {menuItems.map((menuItem, index) => (
+                            <div>
+                                <MenuItem
+                                    key={menuItem.id}
+                                    name={menuItem.name}
+                                    exact={menuItem.exact}
+                                    to={menuItem.to}
+                                    iconClassName={menuItem.iconClassName}
+                                />
+                                <div className="divider">
                                 </div>
-                                <text className="text">Ana Sayfa</text>
-                            </a>
-                        </li>
-                        <li>
-                            <a className="menu-item">
-                                <div className="menu-icon">
-                                    <FaIcons.FaHome />
-                                </div>
-                                <text className="text">Ana Sayfa</text>
-                            </a>
-                        </li>
+                            </div>
+
+                        ))}
                     </ul>
                 </div>
             </div>
