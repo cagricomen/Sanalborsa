@@ -1,38 +1,102 @@
-.App {
-  text-align: center;
+*{
+    margin: 0;
+    padding: 0;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul{
+    padding: 0;
+    margin: 0;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+li{
+    list-style: none;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #eee;
 }
-
-.App-link {
-  color: #61dafb;
+.side-menu{
+    position: fixed;
+    background: chocolate;
+    width: 300px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 30px 20px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.side-menu .top-section{
+    position: relative;
+}
+.side-menu .top-section .logo{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    display: inline-block;
+}
+.side-menu .top-section .logo img{
+    width: 100%;
+    height: 100%;
+}
+.side-menu .top-section .toggle-menu-btn{
+    color: rgb(22, 22, 117);
+    font-size: 25px;
+    position: absolute;
+    top: 53%;
+    right: -42px;
+    transform: translateY(-50%);
+    display: none;
+}
+.side-menu .title{
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+    margin-top: -40px;
+    margin-left: 60px;
+}
+.side-menu .main-menu .menu-item{
+    color: black;
+    text-decoration: solid;
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
+    font-size: 15px;
+}
+.side-menu .main-menu{
+    margin: 5px 0;
+}
+.side-menu .main-menu .menu-item .menu-icon{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    color: blue;
+    font-size: 25px;
+    line-height: 40px;
+    text-align: center;
+}
+.side-menu-footer{
+    width: 100%;
+    height: 100px;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.side-menu-footer .avatar{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+}
+.side-menu-footer .avatar img{
+    max-width: 100%;
+}
+.side-menu-footer .user-info{
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 5px;
+}
+.side-menu .divider{
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background: black;
+    margin-top: 10px;
 }
