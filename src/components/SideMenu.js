@@ -5,6 +5,20 @@ import { menuItems } from './MenuItemData';
 import MenuItem from './MenuItem';
 
 const SideMenu = (props) => {
+    const listItems = menuItems.map((menuItem, index) => (
+        <div key={'mykey' + index}>
+            <MenuItem
+                key={menuItem.name.toString()}
+                name={menuItem.name}
+                exact={menuItem.exact}
+                to={menuItem.to}
+                iconClassName={menuItem.iconClassName}
+            />
+            <div className="divider">
+            </div>
+        </div>
+
+    ));
     return (
         <div className="side-menu">
             <div className="top-section">
@@ -22,20 +36,7 @@ const SideMenu = (props) => {
 
                 <div className="main-menu" >
                     <ul>
-                        {menuItems.map((menuItem, index) => (
-                            <div>
-                                <MenuItem
-                                    key={menuItem.id}
-                                    name={menuItem.name}
-                                    exact={menuItem.exact}
-                                    to={menuItem.to}
-                                    iconClassName={menuItem.iconClassName}
-                                />
-                                <div className="divider">
-                                </div>
-                            </div>
-
-                        ))}
+                        {listItems}
                     </ul>
                 </div>
             </div>
