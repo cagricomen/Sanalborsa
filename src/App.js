@@ -7,6 +7,10 @@ import {
 
 import Home from "./pages/Home";
 import Currency from "./pages/Currency";
+import Login from "./pages/Login";
+import Cryptho from "./pages/Cryptho";
+import Golden from "./pages/Golden";
+import Stocks from "./pages/Stocks";
 
 function App() {
 
@@ -16,7 +20,11 @@ function App() {
         <SideMenu />
         <div className="container">
           <Route path='/' exact component={Home}/>
-          <Route path='/currency' component={Currency} />
+          <Route path='/exchangerates' component={Currency} />
+          <Route path='/login' component={Login} />
+          <Route path='/cryptho' component={Cryptho} />
+          <Route path='/golden' component={Golden} />
+          <Route path='/stocks' component={Stocks} />
         </div>
       </Router>
     </div>

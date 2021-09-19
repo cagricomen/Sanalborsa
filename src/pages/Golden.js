@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import dateFormat from "dateformat";
-import 'flag-icon-css/css/flag-icon.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { http } from '../utils/http';
+import dateFormat from 'dateformat';
+import * as AiIcons from 'react-icons/ai';
 
-const Currency = () => {
 
-    var result =  http.get(process.env.REACT_APP_API + 'exchangerates');
-    const Classses = (name) => {
-        return `flag-icon flag-icon-${name}`;
-    }
-    
-    const [itemData, setItemData] = useState([]);
+function Golden() {
+    const [itemData, setItemData] = useState([])
     const fetchData = () => {
-        return fetch(process.env.REACT_APP_API + 'exchangerates')
+        return fetch(process.env.REACT_APP_API + 'golden')
             .then((response) => response.json())
             .then((data) => setItemData(data.data));
     }
@@ -32,8 +25,6 @@ const Currency = () => {
                                 <th>İsim</th>
                                 <th>Alış</th>
                                 <th>Satış</th>
-                                <th>Yüksek</th>
-                                <th>Düşük</th>
                                 <th>Değişim</th>
                                 <th>Güncelleme</th>
                                 <th>Satın Al</th>
@@ -42,20 +33,18 @@ const Currency = () => {
                         <tbody >
                             {itemData.map(item =>
                                 <tr key={'key' + item.id}>
-                                    <td>
-                                        <span className={Classses(item.shortening)} style={{ fontSize: 30, width: '%100' }}></span>
+                                    <td >
+                                        <AiIcons.AiFillGolden style={{fontSize:'30px' , color:'#FFCE00'}} />
                                     </td>
-                                    <td className="text-danger">{item.name}</td>
-                                    <td>{item.buyPrice}₺</td>
-                                    <td>{item.salePrice}₺</td>
-                                    <td>{item.highestPrice}₺</td>
-                                    <td>{item.lowestPrice}₺</td>
-                                    <td>{item.change}</td>
+                                    <td style={{fontWeight:'bold'}} className="text-danger">{item.name}</td>
+                                    <td>{item.buyPrice}</td>
+                                    <td>{item.salePrice}</td>
+                                    <td>{item.change}%</td>
                                     <td>
-                                        {dateFormat(item.upDateTime, "HH:MM:ss")}
+                                        {dateFormat(item.date, "HH:MM:ss")}
                                     </td>
                                     <td>
-                                        <button style={{width:'100%'}} className="btn outline-danger btn-sm btn-success">Al</button>
+                                        <button className="btn btn-danger btn-sm btn-success">Al</button>
                                     </td>
                                 </tr>
                             )}
@@ -84,4 +73,4 @@ const Currency = () => {
     )
 }
 
-export default Currency;
+export default Golden

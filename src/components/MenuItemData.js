@@ -14,7 +14,7 @@ export const menuItems = [
         id: 1,
         name: "Döviz",
         exact: true,
-        to: "/currency",
+        to: "/exchangerates",
         iconClassName: <FcIcons.FcCurrencyExchange />,
     },
     {
@@ -37,6 +37,12 @@ export const menuItems = [
         exact: true,
         to: "/cryptho",
         iconClassName: <FaIcons.FaBitcoin />,
-         
+    },
+    {
+        id: 5,
+        name: "Giriş Yap",
+        exact: true,
+        to: "/login",
+        iconClassName: <AiIcons.AiOutlineLogin />,
     },
 ];

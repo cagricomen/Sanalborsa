@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import dateFormat from "dateformat";
-import 'flag-icon-css/css/flag-icon.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { http } from '../utils/http';
+import React, { useState, useEffect } from 'react'
+import dateFormat from 'dateformat';
 
-const Currency = () => {
+function Cryptho() {
 
-    var result =  http.get(process.env.REACT_APP_API + 'exchangerates');
-    const Classses = (name) => {
-        return `flag-icon flag-icon-${name}`;
-    }
-    
     const [itemData, setItemData] = useState([]);
     const fetchData = () => {
-        return fetch(process.env.REACT_APP_API + 'exchangerates')
+        return fetch(process.env.REACT_APP_API + 'crypto')
             .then((response) => response.json())
             .then((data) => setItemData(data.data));
     }
     useEffect(() => {
         fetchData();
     }, []);
+
     return (
         <div>
             <h1 style={{ marginLeft: "60px" }}>Dövizler</h1>
@@ -29,33 +22,33 @@ const Currency = () => {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>İsim</th>
-                                <th>Alış</th>
-                                <th>Satış</th>
-                                <th>Yüksek</th>
-                                <th>Düşük</th>
+                                <th >İsim</th>
+                                <th>Satış($)</th>
+                                <th>Satış(₺)</th>
+                                <th>Piyasa Değeri</th>
+                                <th>Hacim(24s)</th>
                                 <th>Değişim</th>
                                 <th>Güncelleme</th>
                                 <th>Satın Al</th>
                             </tr>
                         </thead>
                         <tbody >
-                            {itemData.map(item =>
+                            {itemData.map(item => 
                                 <tr key={'key' + item.id}>
-                                    <td>
-                                        <span className={Classses(item.shortening)} style={{ fontSize: 30, width: '%100' }}></span>
+                                    <td >
+                                        <img src={item.pathImg} style={{width: '30px', height:'30%' ,marginLeft: '10px',}} alt="cry png" />
                                     </td>
-                                    <td className="text-danger">{item.name}</td>
-                                    <td>{item.buyPrice}₺</td>
-                                    <td>{item.salePrice}₺</td>
-                                    <td>{item.highestPrice}₺</td>
-                                    <td>{item.lowestPrice}₺</td>
-                                    <td>{item.change}</td>
+                                    <td style={{fontWeight:'bolder'}} className="text-danger">{item.name}</td>
+                                    <td>{item.buyPriceDolar}₺</td>
+                                    <td>{item.salePriceTL}₺</td>
+                                    <td>{item.marketingValue}₺</td>
+                                    <td>{item.size}₺</td>
+                                    <td>{item.change}%</td>
                                     <td>
                                         {dateFormat(item.upDateTime, "HH:MM:ss")}
                                     </td>
                                     <td>
-                                        <button style={{width:'100%'}} className="btn outline-danger btn-sm btn-success">Al</button>
+                                        <button className="btn btn-danger btn-sm btn-success">Al</button>
                                     </td>
                                 </tr>
                             )}
@@ -84,4 +77,4 @@ const Currency = () => {
     )
 }
 
-export default Currency;
+export default Cryptho;
