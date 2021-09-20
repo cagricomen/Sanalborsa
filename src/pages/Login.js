@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
 
-function Login({pogin,error}) {
-    const [details, setDetails] = useState({name: "", password:""})
-
-    const submitHandler = e => {
-        e.preventDefault();
-    }
+function Login({ pogin, error }) {
+    
 
     return (
-        <form onSubmit={submitHandler}>
+        <form>
             <div style={{ marginLeft: '60px' }} className="form-inner">
                 <h2>Giriş</h2>
                 <div className="form-group">
@@ -20,6 +16,7 @@ function Login({pogin,error}) {
                     <input type="password" name="password" id="password" />
                 </div>
                 <input type="submit" value="Giriş" />
+                <input type="submit" value="Kayıt ol" />
             </div>
         </form>
     )
